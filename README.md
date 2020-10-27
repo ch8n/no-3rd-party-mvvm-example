@@ -1,4 +1,5 @@
-# android-no-3rd-party-mvvm-example
+# Android-no-3rd-party-mvvm-example
+
 #### This project AIM to demonstrate all the feature present in modern android development using core standard android libraries 
 
 if you like to request a feature to be implemented using standard libraries please create a `issue`
