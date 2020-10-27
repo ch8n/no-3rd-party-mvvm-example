@@ -1,47 +1,39 @@
 package com.example.airtel.detail
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.observe
 import com.example.airtel.R
 import com.example.airtel.data.remote.sources.MovieDetailResponse
 import com.example.airtel.detail.adapter.MovieDetailTextAdapter
 import com.example.airtel.detail.adapter.TextListItem
-import com.example.airtel.search.addDisposer
+import com.example.airtel.di.Injector
 import com.example.airtel.utils.loadImage
-import dagger.android.AndroidInjection
-import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_detail.*
 import timber.log.Timber
-import javax.inject.Inject
 
 class MovieDetailActivity : AppCompatActivity() {
 
-    private val compositeDisposable : CompositeDisposable = CompositeDisposable()
-
-    @Inject
     lateinit var viewModel: MovieDetailViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        //   val viewModel = Injector.detailViewModel(this)
+        viewModel = Injector.detailViewModel(this)
 
-        viewModel.getMovieDetail(getMovieId())
-            .subscribe({
+        with(viewModel){
+            ratingLiveData.observe(this@MovieDetailActivity){
                 onResult(it)
                 progress.visibility = View.GONE
-            }, {
+            }
+            errorLiveData.observe(this@MovieDetailActivity){
                 onErrorResult(it)
                 progress.visibility = View.GONE
-            })
-            .addDisposer(compositeDisposable)
-
+            }
+        }
 
         image_back.setOnClickListener {
             finish()
@@ -56,10 +48,6 @@ class MovieDetailActivity : AppCompatActivity() {
             finish()
         }
         return movie_id
-    }
-    override fun onDestroy() {
-        super.onDestroy()
-        compositeDisposable.dispose()
     }
 
     fun onResult(movieDetail : MovieDetailResponse){

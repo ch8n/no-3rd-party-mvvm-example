@@ -1,12 +1,12 @@
 package com.example.airtel
 
-import com.example.airtel.di.DaggerAppComponent
-import dagger.android.AndroidInjector
-import dagger.android.DaggerApplication
+import android.app.Application
+import timber.log.Timber
 
-class AirtelApplication : DaggerApplication() {
-    override fun applicationInjector(): AndroidInjector<out DaggerApplication> = DaggerAppComponent
-        .builder()
-        .application(this)
-        .build()
+class AirtelApplication : Application() {
+
+    override fun onCreate() {
+        super.onCreate()
+        Timber.plant(Timber.DebugTree())
+    }
 }

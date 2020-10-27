@@ -3,7 +3,6 @@ package com.example.airtel
 class GoogleAnalytics() : Analytics{
 
     override fun isEnable(): Boolean {
-
         return true
     }
 
@@ -16,7 +15,6 @@ class GoogleAnalytics() : Analytics{
 class FirebaseAnalytics() : Analytics{
 
     override fun isEnable(): Boolean {
-
         return true
     }
 
@@ -55,7 +53,6 @@ class AnalyticsWrapper : Analytics{
 
 fun main(){
     val analyticsWrapper = AnalyticsWrapper()
-
     analyticsWrapper.addAnalytics(GoogleAnalytics(), FirebaseAnalytics())
     analyticsWrapper.Log("Pokemon", mutableMapOf("Chetu" to "Coder"))
 }

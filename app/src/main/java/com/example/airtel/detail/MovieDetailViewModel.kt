@@ -25,11 +25,11 @@ import java.util.concurrent.TimeUnit
 
 class MovieDetailViewModel(private val movieRespository: MovieRepositoryNative) : ViewModel() {
 
-    private val _ratingLiveData = MutableLiveData<List<Rating>>()
+    private val _ratingLiveData = MutableLiveData<MovieDetailResponse>()
     private val _errorLiveData = MutableLiveData<Throwable>()
 
     val errorLiveData: LiveData<Throwable> = _errorLiveData
-    val ratingLiveData: LiveData<List<Rating>> = _ratingLiveData
+    val ratingLiveData: LiveData<MovieDetailResponse> = _ratingLiveData
 
     fun getMovieDetailNative(movieId: String) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -40,7 +40,7 @@ class MovieDetailViewModel(private val movieRespository: MovieRepositoryNative) 
                         val rating = "${it.source} : ${it.value}"
                         Rating(source = rating, value = null)
                     } ?: emptyList()
-                    _ratingLiveData.postValue(viewList)
+                    _ratingLiveData.postValue(result.value)
                 }
                 is Result.Error -> {
                     _errorLiveData.postValue(result.error)
