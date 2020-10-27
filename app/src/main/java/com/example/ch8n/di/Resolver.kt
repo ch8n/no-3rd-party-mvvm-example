@@ -2,7 +2,6 @@ package com.example.ch8n.di
 
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProviders
-import com.example.ch8n.data.remote.config.ApiManager
 import com.example.ch8n.data.remote.config.RestManager
 import com.example.ch8n.data.remote.sources.MovieServiceProvider
 import com.example.ch8n.data.remote.sources.MovieSourceNative
