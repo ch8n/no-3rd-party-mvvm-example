@@ -35,6 +35,8 @@ class MovieDetailActivity : AppCompatActivity() {
             }
         }
 
+        viewModel.getMovieDetailNative(getMovieId())
+
         image_back.setOnClickListener {
             finish()
         }
@@ -77,15 +79,15 @@ class MovieDetailActivity : AppCompatActivity() {
 
         with(container_movie_detail){
             image_banner.loadImage(movieDetail.poster?:"")
-            text_title.setText("${movieDetail.title?:""}")
-            text_release_date.setText("$MOVIE_YEAR : ${movieDetail.released?:""}")
-            text_plot.setText(movieDetail.plot?:"")
-            text_genre.setText("$MOVIE_GENRE : ${movieDetail.genre?:""}")
-            text_language.setText("$MOVIE_LANGUAGE : ${movieDetail.language?:""}")
-            text_runtime.setText("$MOVIE_RUNTIME : ${movieDetail.runtime?:""}")
-            text_production.setText("$MOVIE_PRODUCTION : ${movieDetail.production?:""}")
-            text_imdb_rating.setText("$MOVIE_IMDB_RATING : ${movieDetail.imdbRating?:""}")
-            text_imdb_votes.setText("$MOVIE_IMDB_VOTES : ${movieDetail.imdbVotes?:""}")
+            text_title.text = "${movieDetail.title?:""}"
+            text_release_date.text = "$MOVIE_YEAR : ${movieDetail.released?:""}"
+            text_plot.text = movieDetail.plot?:""
+            text_genre.text = "$MOVIE_GENRE : ${movieDetail.genre?:""}"
+            text_language.text = "$MOVIE_LANGUAGE : ${movieDetail.language?:""}"
+            text_runtime.text = "$MOVIE_RUNTIME : ${movieDetail.runtime?:""}"
+            text_production.text = "$MOVIE_PRODUCTION : ${movieDetail.production?:""}"
+            text_imdb_rating.text = "$MOVIE_IMDB_RATING : ${movieDetail.imdbRating?:""}"
+            text_imdb_votes.text = "$MOVIE_IMDB_VOTES : ${movieDetail.imdbVotes?:""}"
         }
 
         if (!ratings.isEmpty()) {

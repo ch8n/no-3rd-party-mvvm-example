@@ -6,22 +6,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.airtel.data.remote.sources.MovieDetailRequest
 import com.example.airtel.data.remote.sources.MovieDetailResponse
-import com.example.airtel.data.remote.sources.MovieSearchRequest
 import com.example.airtel.data.remote.sources.Rating
-import com.example.airtel.data.repository.MovieRepository
 import com.example.airtel.data.repository.MovieRepositoryNative
-import com.example.airtel.di.Injector
-import com.example.airtel.search.adapter.SearchListItem
 import com.example.airtel.utils.Result
-import com.google.gson.Gson
-import io.reactivex.Observable
-import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import timber.log.Timber
-import java.util.concurrent.TimeUnit
 
 class MovieDetailViewModel(private val movieRespository: MovieRepositoryNative) : ViewModel() {
 

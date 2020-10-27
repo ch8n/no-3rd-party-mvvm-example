@@ -2,9 +2,6 @@ package com.example.airtel.data.remote.config
 
 import com.example.airtel.utils.Result
 import com.google.gson.Gson
-import com.google.gson.JsonObject
-import okhttp3.ResponseBody
-import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader

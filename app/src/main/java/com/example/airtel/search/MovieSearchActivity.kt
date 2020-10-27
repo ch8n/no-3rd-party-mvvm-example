@@ -13,21 +13,15 @@ import com.example.airtel.detail.MovieDetailActivity
 import com.example.airtel.di.Injector
 import com.example.airtel.search.adapter.MovieSearchAdapter
 import com.example.airtel.search.adapter.SearchListItem
-import dagger.android.AndroidInjection
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
-import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.activity_movie_search.*
-import kotlinx.android.synthetic.main.activity_movie_search.image_back
-import kotlinx.android.synthetic.main.activity_movie_search.progress
 import timber.log.Timber
-import javax.inject.Inject
+
 
 class MovieSearchActivity : AppCompatActivity() {
 
     private lateinit var movieSearchAdapter: MovieSearchAdapter
 
-    @Inject
+
     lateinit var viewModel: MovieSearchViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
