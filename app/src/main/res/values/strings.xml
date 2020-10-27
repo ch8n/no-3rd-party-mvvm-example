@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Airtel Sample Project</string>
+    <string name="app_name">No Lib Sample</string>
     <string name="ratings">Ratings</string>
     <string name="director">Directors</string>
     <string name="writer">Writers</string>
